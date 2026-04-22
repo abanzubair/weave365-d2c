@@ -82,13 +82,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
           const imageUrl = id ? "https://lh3.googleusercontent.com/d/" + id : link;
 
-          products.push({
-            id: id || `prod_${i}`,
-            name: name || "UNTITLED",
-            category: category || "NEW ARRIVAL",
-            price: price || 150,
-            url: imageUrl
-          });
+          if (category.toUpperCase() === "HERO" || name.toUpperCase() === "HERO") {
+            const heroSection = document.querySelector('.hero');
+            if (heroSection) {
+              heroSection.style.backgroundImage = `url('${imageUrl}')`;
+            }
+          } else {
+            products.push({
+              id: id || `prod_${i}`,
+              name: name || "UNTITLED",
+              category: category || "NEW ARRIVAL",
+              price: price || 150,
+              url: imageUrl
+            });
+          }
         }
       }
 
