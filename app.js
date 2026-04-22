@@ -1,6 +1,9 @@
 // Application Logic
 let cart = [];
 let currentProduct = null;
+let allProducts = [];
+let currentDisplayCount = 0;
+const PRODUCTS_PER_PAGE = 8;
 
 document.addEventListener('DOMContentLoaded', () => {
   const gallery = document.getElementById('product-gallery');
@@ -25,6 +28,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const cartSubtotal = document.getElementById('cart-subtotal');
   const cartTotal = document.getElementById('cart-total');
   const checkoutBtn = document.getElementById('checkout-btn');
+  const loadMoreBtn = document.getElementById('load-more-btn');
+
+  if (loadMoreBtn) {
+    loadMoreBtn.addEventListener('click', () => {
+      loadMoreProducts();
+    });
+  }
 
   // PASTE YOUR GOOGLE SHEET CSV LINK HERE
   const GOOGLE_SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQuQL-2EKGXcSBQDEG5b6qca-rzH7EfF7Z_r3xieFysP6LJFPyXf6mlwEQiPYVNEEfNGn_NRg8YcQAF/pub?gid=0&single=true&output=csv";
@@ -83,7 +93,10 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       if (products.length > 0) {
-        renderShowcase(products);
+        allProducts = products;
+        currentDisplayCount = 0;
+        gallery.innerHTML = ''; // Clear once before loading first batch
+        loadMoreProducts();
       } else {
         throw new Error("No products found in sheet");
       }
@@ -110,10 +123,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  function renderShowcase(products) {
+  function loadMoreProducts() {
+    if (!allProducts || allProducts.length === 0) return;
+
+    const nextProducts = allProducts.slice(currentDisplayCount, currentDisplayCount + PRODUCTS_PER_PAGE);
+    renderShowcase(nextProducts, false); // false means append, do not clear
+    currentDisplayCount += nextProducts.length;
+
+    const loadMoreContainer = document.getElementById('load-more-container');
+    if (loadMoreContainer) {
+      if (currentDisplayCount >= allProducts.length) {
+        loadMoreContainer.style.display = 'none';
+      } else {
+        loadMoreContainer.style.display = 'block';
+      }
+    }
+  }
+
+  function renderShowcase(products, clear = true) {
     if (!products || products.length === 0) return;
 
-    gallery.innerHTML = '';
+    if (clear) gallery.innerHTML = '';
     products.forEach((product, index) => {
       const card = document.createElement('div');
       card.className = 'product-card';
@@ -126,10 +156,12 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="product-img-wrapper">
           <img src="${product.url}" alt="${product.name}" loading="lazy">
         </div>
-        <div class="product-price font-label-caps">${priceStr}</div>
         <div class="product-info">
-          <h3 class="font-label-caps">${product.name}</h3>
-          <p class="font-body-md">${product.category || 'PREMIUM SILK'}</p>
+          <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px;">
+            <h3 class="font-label-caps" style="margin: 0;">${product.name}</h3>
+            <span class="font-label-caps" style="font-weight: 700;">${priceStr}</span>
+          </div>
+          <p class="font-body-md" style="margin: 0;">${product.category || 'PREMIUM SILK'}</p>
         </div>
       `;
 
