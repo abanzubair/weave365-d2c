@@ -153,15 +153,14 @@ document.addEventListener('DOMContentLoaded', () => {
       const priceStr = `₹${priceVal}`;
 
       card.innerHTML = `
+        <button class="wishlist-btn"><span class="material-symbols-outlined">favorite_border</span></button>
         <div class="product-img-wrapper">
           <img src="${product.url}" alt="${product.name}" loading="lazy">
         </div>
         <div class="product-info">
-          <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px;">
-            <h3 class="font-label-caps" style="margin: 0;">${product.name}</h3>
-            <span class="font-label-caps" style="font-weight: 700;">${priceStr}</span>
-          </div>
-          <p class="font-body-md" style="margin: 0;">${product.category || 'PREMIUM SILK'}</p>
+          <h3 class="product-title">${product.name}</h3>
+          <span class="product-price">${priceStr}</span>
+          <span class="product-label">NEW</span>
         </div>
       `;
 
@@ -177,13 +176,26 @@ document.addEventListener('DOMContentLoaded', () => {
     modalPrice.textContent = product.price;
     modalCategory.textContent = product.category || 'PREMIUM SILK';
     modal.classList.add('open');
+    const overlay = document.getElementById('modal-overlay');
+    if (overlay) overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
 
   closeModalBtn.addEventListener('click', () => {
     modal.classList.remove('open');
+    const overlay = document.getElementById('modal-overlay');
+    if (overlay) overlay.classList.remove('open');
     document.body.style.overflow = '';
   });
+
+  const modalOverlay = document.getElementById('modal-overlay');
+  if (modalOverlay) {
+    modalOverlay.addEventListener('click', () => {
+      modal.classList.remove('open');
+      modalOverlay.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  }
 
   // Cart Logic
   addToBagBtn.addEventListener('click', () => {
@@ -198,6 +210,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     renderCart();
     modal.classList.remove('open'); // Close product modal
+    const overlay = document.getElementById('modal-overlay');
+    if (overlay) overlay.classList.remove('open');
     openCart(); // Open cart to show it was added
   });
 

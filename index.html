@@ -4,193 +4,380 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>weave365 | Vibrant Modernist Showcase</title>
-  <meta name="description" content="A high-fashion, high-energy storefront for contemporary sarees." />
+  <title>SAARANG | Timeless Weaves</title>
+  <meta name="description" content="Sarees that move with elegance. A visual narrative of fabric, light, and motion." />
   <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
-  <!-- Top Navigation Anchor -->
-  <header class="top-nav">
-    <div class="nav-left">
-      <button class="nav-btn material-symbols-outlined mobile-only" aria-label="Menu">menu</button>
-      <div class="logo font-display-lg" style="font-style: italic; font-size: 1.5rem;">weave365</div>
+  <!-- Top Announcement Bar -->
+  <div class="top-bar">
+    FREE SHIPPING ON PREPAID ORDERS | COD AVAILABLE
+  </div>
+
+  <!-- Navbar -->
+  <header class="navbar" id="navbar">
+    <div class="navbar-top">
+      <div class="nav-left">
+        <button class="nav-icon mobile-only" aria-label="Menu">
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+      </div>
+      
+      <a href="#" class="logo">SAARANG</a>
+
+      <div class="nav-right">
+        <button class="nav-icon" aria-label="Search">
+          <span class="material-symbols-outlined">search</span>
+        </button>
+        <button class="nav-icon desktop-only" aria-label="User">
+          <span class="material-symbols-outlined">person</span>
+        </button>
+        <button class="nav-icon desktop-only" aria-label="Wishlist">
+          <span class="material-symbols-outlined">favorite_border</span>
+        </button>
+        <button class="nav-icon" id="nav-cart-btn" aria-label="Shopping Bag">
+          <span class="material-symbols-outlined">local_mall</span>
+        </button>
+      </div>
     </div>
 
     <div class="nav-center desktop-only">
-      <a href="#" class="nav-link active">SAREES</a>
-      <a href="#" class="nav-link">DRAPE EDITORIAL</a>
-      <a href="#" class="nav-link">COLLECTIONS</a>
-      <a href="#" class="nav-link">THE STUDIO</a>
-    </div>
-
-    <div class="nav-right" style="display: flex; gap: 16px;">
-      <button class="nav-btn material-symbols-outlined" id="nav-cart-btn"
-        aria-label="Shopping Bag">shopping_bag</button>
-      <button class="nav-btn material-symbols-outlined" aria-label="User Profile">person</button>
+      <a href="#" class="nav-link active">Sarees</a>
+      <a href="#" class="nav-link">New In</a>
+      <a href="#" class="nav-link">Bestsellers</a>
+      <a href="#" class="nav-link">Collections</a>
+      <a href="#" class="nav-link">Occasions</a>
+      <a href="#" class="nav-link">Sale</a>
     </div>
   </header>
 
   <main id="app-content">
     <!-- Hero Section -->
-    <section class="hero-section">
-      <div class="hero-img-wrapper" id="hero-img-container">
-
-        <!-- OPTION 1: For a Video, uncomment the line below and paste your link -->
-        <!-- <video src="video/saree%20hero.mp4" autoplay loop muted playsinline
-          style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;"></video> -->
-
-        <!-- OPTION 2: For an Image, uncomment the line below and paste your link -->
-        <img src="https://lh3.googleusercontent.com/d/1c4FFCV56edERjGURQzNoDFxiMz3y3dFU" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
-
-        <div class="hero-floating-card">
-          <span class="font-label-caps" style="color: var(--ash-muted); font-size: 0.6rem;">FALL 2024</span>
-          <h2 class="font-display-lg" style="font-style: italic; font-size: 1.5rem; margin-top: 4px;">
-            AVANT-GARDE<br>TRADITION</h2>
-        </div>
-      </div>
-      <div class="hero-text-wrapper">
-        <h1 class="font-display-xl vertical-text">THE FESTIVAL EDIT</h1>
-      </div>
-    </section>
-
-    <!-- Signature Marquee -->
-    <div class="marquee-container">
-      <div class="marquee-content">
-        <span class="font-label-caps font-display-lg" style="font-style: italic; font-size: 1rem;">NEW ARRIVALS • NEW
-          ARRIVALS • NEW ARRIVALS • NEW ARRIVALS • NEW ARRIVALS • NEW ARRIVALS • NEW ARRIVALS • NEW ARRIVALS • </span>
-        <span class="font-label-caps font-display-lg" style="font-style: italic; font-size: 1rem;">NEW ARRIVALS • NEW
-          ARRIVALS • NEW ARRIVALS • NEW ARRIVALS • NEW ARRIVALS • NEW ARRIVALS • NEW ARRIVALS • NEW ARRIVALS • </span>
-      </div>
-    </div>
-
-    <!-- Asymmetrical Editorial Grid -->
-    <section class="grid grid-cols-2 craft-section">
-      <div class="col-span-1 feature-block craft-text-block" style="border-right: var(--border-thick);">
-        <div>
-          <h2 class="font-display-xl" style="font-size: 4rem; letter-spacing: -0.05em;">CRAFTS</h2>
-          <p class="font-body-md" style="margin-top: 24px; max-width: 400px; color: var(--ash-muted);">Rejecting the
-            mass-produced. Our looms breathe life into ancient techniques through a lens of raw, contemporary rebellion.
-            Every thread is a statement of unapologetic heritage.</p>
-        </div>
-        <button class="outline-btn" style="margin-top: 48px; align-self: flex-start;">THE MAKING OF weave365</button>
-      </div>
-      <div class="col-span-1 relative craft-img-block" id="feature-img-container">
-        <!-- OPTION 1: For a Video, uncomment the line below and paste your link -->
-        <!-- <video src="video/saree-hero2.mp4" autoplay loop muted playsinline
-          style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;"></video> -->
-
-        <!-- OPTION 2: For an Image, paste your Google Drive link below -->
-        <img src="https://lh3.googleusercontent.com/d/1DKtMFei2Y7ODoU02mu1L6jmY2fQnKLXp" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
-      </div>
-    </section>
-
-    <!-- Archive Section -->
-    <section class="grid grid-cols-2 archive-section">
-      <div class="col-span-1 archive-gallery">
-        <h2 class="font-display-xl" style="color: var(--primary); font-style: italic; margin-bottom: 32px;">ARCHIVE</h2>
-        <div class="archive-cards">
-          <div class="archive-card">
-            <span class="sold-out-badge">SOLD OUT</span>
-            <div class="archive-img placeholder-img-1"></div>
-            <h3 class="font-label-caps" style="color: var(--pearl-bg); margin-top: 16px;">VOL 01: THE OBSIDIAN</h3>
-          </div>
-          <div class="archive-card archive-card-offset">
-            <div class="archive-img placeholder-img-2"></div>
-            <h3 class="font-label-caps" style="color: var(--pearl-bg); margin-top: 16px;">VOL 02: RAW SILK</h3>
+    <section class="hero">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <div class="hero-text">
+          <p class="label-caps" style="color: rgba(255,255,255,0.7); margin-bottom: 16px;">ROOTED IN TRADITION, WOVEN FOR YOU</p>
+          <h1 class="heading-xl">SAREES THAT<br>MOVE WITH<br><span class="text-italic">elegance</span><span class="text-accent">*</span></h1>
+          <p class="body-lg">Timeless weaves. Modern you.<br>For every moment that matters.</p>
+          <div style="margin-top: 32px;">
+            <a href="#" class="btn-outline btn-outline-light" style="padding: 16px 32px;">SHOP SAREES <span class="material-symbols-outlined" style="font-size: 18px;">arrow_forward</span></a>
           </div>
         </div>
       </div>
-      <div class="col-span-1 archive-text-block">
-        <div style="border-top: 2px solid var(--primary); padding-top: 24px; width: 100%; max-width: 400px;">
-          <h2 class="font-display-lg" style="color: var(--pearl-bg); font-size: 2.5rem; line-height: 1.1;">
-            LIMITED<br>RELEASES<br>FROM THE<br>VAULT.</h2>
-          <button class="outline-btn"
-            style="color: var(--pearl-bg); border-color: var(--pearl-bg); margin-top: 48px;">VIEW ALL ARCHIVES</button>
+    </section>
+
+    <!-- Feature Strip -->
+    <section class="features">
+      <div class="feature-item">
+        <span class="material-symbols-outlined">local_shipping</span>
+        <span class="feature-title">Free Shipping</span>
+        <span class="feature-desc">On prepaid orders</span>
+      </div>
+      <div class="feature-item">
+        <span class="material-symbols-outlined">payments</span>
+        <span class="feature-title">COD Available</span>
+        <span class="feature-desc">Easy Cash on Delivery</span>
+      </div>
+      <div class="feature-item">
+        <span class="material-symbols-outlined">published_with_changes</span>
+        <span class="feature-title">Easy Returns</span>
+        <span class="feature-desc">Hassle-free returns</span>
+      </div>
+      <div class="feature-item">
+        <span class="material-symbols-outlined">security</span>
+        <span class="feature-title">Secure Payments</span>
+        <span class="feature-desc">100% safe & trusted</span>
+      </div>
+    </section>
+
+    <!-- Shop by Category -->
+    <section class="section" style="padding-top: 40px;">
+      <div class="section-header">
+        <h2 class="heading-md" style="display: flex; align-items: center; justify-content: center; gap: 16px;">
+          <span style="width: 40px; height: 1px; background-color: rgba(0,0,0,0.2); display: inline-block;"></span>
+          SHOP BY CATEGORY
+          <span style="width: 40px; height: 1px; background-color: rgba(0,0,0,0.2); display: inline-block;"></span>
+        </h2>
+      </div>
+      <div class="category-grid">
+        <a href="#" class="category-item">
+          <div class="category-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=400&auto=format&fit=crop" alt="Silk Sarees">
+          </div>
+          <div class="center">
+            <h3 class="category-title">SILK SAREES</h3>
+            <p class="body-md" style="font-size: 0.75rem; margin-top: 4px;">Timeless luxury</p>
+          </div>
+        </a>
+        <a href="#" class="category-item">
+          <div class="category-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1583391733958-d25e07fac044?q=80&w=400&auto=format&fit=crop" alt="Cotton Sarees">
+          </div>
+          <div class="center">
+            <h3 class="category-title">COTTON SAREES</h3>
+            <p class="body-md" style="font-size: 0.75rem; margin-top: 4px;">Everyday elegance</p>
+          </div>
+        </a>
+        <a href="#" class="category-item">
+          <div class="category-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1605806616949-1e87b487cb2a?q=80&w=400&auto=format&fit=crop" alt="Banarasi Sarees">
+          </div>
+          <div class="center">
+            <h3 class="category-title">BANARASI SAREES</h3>
+            <p class="body-md" style="font-size: 0.75rem; margin-top: 4px;">Heritage weaves</p>
+          </div>
+        </a>
+        <a href="#" class="category-item">
+          <div class="category-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1589465885855-4421115e4f4d?q=80&w=400&auto=format&fit=crop" alt="Chiffon Sarees">
+          </div>
+          <div class="center">
+            <h3 class="category-title">CHIFFON SAREES</h3>
+            <p class="body-md" style="font-size: 0.75rem; margin-top: 4px;">Light & graceful</p>
+          </div>
+        </a>
+        <a href="#" class="category-item">
+          <div class="category-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1613588718956-c2e80305bf61?q=80&w=400&auto=format&fit=crop" alt="Printed Sarees">
+          </div>
+          <div class="center">
+            <h3 class="category-title">PRINTED SAREES</h3>
+            <p class="body-md" style="font-size: 0.75rem; margin-top: 4px;">Trendy & vibrant</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- New Arrivals -->
+    <section class="section" style="background-color: var(--bg-cream); padding-top: 0;">
+      <div class="section-header">
+        <h2 class="heading-md">NEW IN <span class="material-symbols-outlined" style="color: #b77b5a; font-size: 24px; vertical-align: middle;">filter_vintage</span></h2>
+        <p class="body-md" style="margin-top: 8px;">Fresh drops. Handpicked for you.</p>
+      </div>
+      <div id="product-gallery" class="product-grid">
+        <!-- Products populated by JS -->
+      </div>
+      <div class="center" style="margin-top: 48px;">
+        <button id="load-more-btn" class="btn-outline">VIEW ALL NEW ARRIVALS</button>
+      </div>
+    </section>
+
+    <!-- Bestsellers -->
+    <section class="section bestsellers-section">
+      <div class="section-header">
+        <h2 class="heading-md">BESTSELLERS</h2>
+        <p class="body-md" style="color: rgba(255,255,255,0.7); margin-top: 8px;">Loved by thousands of saree lovers.</p>
+      </div>
+      <div id="bestseller-gallery" class="product-grid">
+        <!-- Static placeholders for bestsellers -->
+        <div class="product-card">
+          <button class="wishlist-btn"><span class="material-symbols-outlined">favorite_border</span></button>
+          <div class="product-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1605806616949-1e87b487cb2a?q=80&w=400&auto=format&fit=crop" alt="Red Banarasi">
+          </div>
+          <div class="product-info">
+            <h3 class="product-title">Red Banarasi Silk Saree</h3>
+            <span class="product-price">₹3,299</span>
+            <div class="rating"><span class="material-symbols-outlined" style="font-size: 14px; font-variation-settings: 'FILL' 1;">star</span> 4.9 (124)</div>
+          </div>
+        </div>
+        <div class="product-card">
+          <button class="wishlist-btn"><span class="material-symbols-outlined">favorite_border</span></button>
+          <div class="product-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=400&auto=format&fit=crop" alt="Black Woven">
+          </div>
+          <div class="product-info">
+            <h3 class="product-title">Black Woven Saree</h3>
+            <span class="product-price">₹2,499</span>
+            <div class="rating"><span class="material-symbols-outlined" style="font-size: 14px; font-variation-settings: 'FILL' 1;">star</span> 4.8 (86)</div>
+          </div>
+        </div>
+        <div class="product-card">
+          <button class="wishlist-btn"><span class="material-symbols-outlined">favorite_border</span></button>
+          <div class="product-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1583391733958-d25e07fac044?q=80&w=400&auto=format&fit=crop" alt="Mustard Tissue">
+          </div>
+          <div class="product-info">
+            <h3 class="product-title">Mustard Tissue Saree</h3>
+            <span class="product-price">₹2,799</span>
+            <div class="rating"><span class="material-symbols-outlined" style="font-size: 14px; font-variation-settings: 'FILL' 1;">star</span> 4.9 (207)</div>
+          </div>
+        </div>
+        <div class="product-card">
+          <button class="wishlist-btn"><span class="material-symbols-outlined">favorite_border</span></button>
+          <div class="product-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1613588718956-c2e80305bf61?q=80&w=400&auto=format&fit=crop" alt="Purple Kanjivaram">
+          </div>
+          <div class="product-info">
+            <h3 class="product-title">Purple Kanjivaram Saree</h3>
+            <span class="product-price">₹3,899</span>
+            <div class="rating"><span class="material-symbols-outlined" style="font-size: 14px; font-variation-settings: 'FILL' 1;">star</span> 4.8 (156)</div>
+          </div>
+        </div>
+      </div>
+      <div class="center" style="margin-top: 48px;">
+        <button class="btn-outline btn-outline-light">VIEW ALL BESTSELLERS</button>
+      </div>
+    </section>
+
+    <!-- Story Banner -->
+    <section class="story-banner">
+      <div class="story-overlay"></div>
+      <img src="https://lh3.googleusercontent.com/d/1DKtMFei2Y7ODoU02mu1L6jmY2fQnKLXp" alt="Cinematic Saree Banner">
+      <div class="story-content">
+        <h2 class="heading-lg">SAREES FOR EVERY YOU</h2>
+        <p class="body-lg" style="color: rgba(255,255,255,0.9);">From festive moments to everyday magic.</p>
+        <a href="#" class="btn-outline btn-outline-light" style="margin-top: 16px;">EXPLORE COLLECTIONS</a>
+      </div>
+    </section>
+
+    <!-- Brand Values -->
+    <section class="section values-section">
+      <div class="values-grid">
+        <div class="value-card">
+          <span class="material-symbols-outlined">diamond</span>
+          <h3 class="category-title" style="margin-bottom: 8px;">PREMIUM QUALITY</h3>
+          <p class="body-md" style="font-size: 0.875rem;">Finest fabrics & weaves</p>
+        </div>
+        <div class="value-card">
+          <span class="material-symbols-outlined">verified</span>
+          <h3 class="category-title" style="margin-bottom: 8px;">HANDPICKED DESIGNS</h3>
+          <p class="body-md" style="font-size: 0.875rem;">Curated with love</p>
+        </div>
+        <div class="value-card">
+          <span class="material-symbols-outlined">handshake</span>
+          <h3 class="category-title" style="margin-bottom: 8px;">SUPPORT ARTISANS</h3>
+          <p class="body-md" style="font-size: 0.875rem;">Empowering weavers</p>
+        </div>
+        <div class="value-card">
+          <span class="material-symbols-outlined">location_on</span>
+          <h3 class="category-title" style="margin-bottom: 8px;">MADE IN INDIA</h3>
+          <p class="body-md" style="font-size: 0.875rem;">Proudly Indian</p>
         </div>
       </div>
     </section>
 
-    <!-- Product Block Masonry (Kept for functionality) -->
-    <div style="background: var(--pearl-bg); border-top: var(--border-thick);">
-      <h2 class="font-display-lg"
-        style="text-align: center; padding: 48px 0; font-style: italic; border-bottom: var(--border-thick);">SHOP THE
-        RUNWAY</h2>
-      <section class="gallery-grid" id="product-gallery">
-        <!-- Products dynamically inserted here -->
-      </section>
-      <div id="load-more-container" style="text-align: center; padding: 48px 0; display: none;">
-        <button id="load-more-btn" class="outline-btn">LOAD MORE</button>
+    <!-- Community Section -->
+    <section class="section" style="padding-top: 0;">
+      <div class="section-header">
+        <h2 class="heading-md">#SAARANGGIRL</h2>
+        <p class="body-md" style="margin-top: 8px;">Real women. Real style.</p>
       </div>
-    </div>
+      <div class="community-grid">
+        <div class="community-img-wrapper"><img src="https://images.unsplash.com/photo-1583391733958-d25e07fac044?q=80&w=400&auto=format&fit=crop" class="community-img"></div>
+        <div class="community-img-wrapper"><img src="https://images.unsplash.com/photo-1605806616949-1e87b487cb2a?q=80&w=400&auto=format&fit=crop" class="community-img"></div>
+        <div class="community-img-wrapper"><img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=400&auto=format&fit=crop" class="community-img"></div>
+        <div class="community-img-wrapper"><img src="https://images.unsplash.com/photo-1613588718956-c2e80305bf61?q=80&w=400&auto=format&fit=crop" class="community-img"></div>
+      </div>
+      <div class="center">
+        <button class="btn-outline">FOLLOW US ON INSTAGRAM</button>
+      </div>
+    </section>
 
     <!-- Newsletter Section -->
     <section class="newsletter-section">
-      <h2 class="font-display-xl" style="text-align: center; font-size: 4rem;">JOIN THE<br>REBELLION</h2>
+      <h2 class="heading-md">BE THE FIRST TO KNOW</h2>
+      <p class="body-md" style="color: rgba(255,255,255,0.8); margin-top: 8px;">New launches, exclusive offers & more.</p>
       <div class="newsletter-form">
-        <input type="email" placeholder="EMAIL@ADDRESS.COM" class="newsletter-input">
+        <input type="email" placeholder="Enter your email" class="newsletter-input">
         <button class="newsletter-btn">SUBSCRIBE</button>
       </div>
     </section>
   </main>
 
-  <!-- Desktop Footer -->
-  <footer class="desktop-footer">
+  <!-- Footer -->
+  <footer class="footer">
     <div class="footer-top">
       <div>
-        <h2 class="font-display-md" style="font-style: italic; color: var(--pearl-bg);">weave365</h2>
-        <p class="font-label-caps" style="color: var(--primary); margin-top: 8px;">BOLD TRADITION. UNAPOLOGETIC STYLE.
-        </p>
+        <h2 class="logo" style="margin-bottom: 16px; display: inline-block;">SAARANG</h2>
+        <p class="body-md" style="color: rgba(255,255,255,0.7); max-width: 300px;">Celebrating the beauty of sarees. Crafted with tradition, styled for today.</p>
+        <div class="social-icons" style="margin-top: 24px;">
+          <a href="#" class="social-icon"><span class="material-symbols-outlined">camera_alt</span></a>
+          <a href="#" class="social-icon"><span class="material-symbols-outlined">thumb_up</span></a>
+          <a href="#" class="social-icon"><span class="material-symbols-outlined">play_circle</span></a>
+        </div>
       </div>
-      <div class="footer-links font-label-caps">
-        <a href="#">PRIVACY</a>
-        <a href="#">SHIPPING</a>
-        <a href="#">STORES</a>
-        <a href="#">PRESS</a>
-        <a href="#">CAREERS</a>
-        <span style="color: var(--ash-muted); margin-left: 24px; font-size: 0.6rem;">©2024 weave365. ALL RIGHTS
-          RESERVED.</span>
+      
+      <div>
+        <h3 class="footer-col-title">SHOP</h3>
+        <div class="footer-links">
+          <a href="#" class="footer-link">All Sarees</a>
+          <a href="#" class="footer-link">Silk Sarees</a>
+          <a href="#" class="footer-link">Cotton Sarees</a>
+          <a href="#" class="footer-link">New In</a>
+          <a href="#" class="footer-link">Bestsellers</a>
+          <a href="#" class="footer-link">Sale</a>
+        </div>
       </div>
+
+      <div>
+        <h3 class="footer-col-title">HELP</h3>
+        <div class="footer-links">
+          <a href="#" class="footer-link">FAQs</a>
+          <a href="#" class="footer-link">Shipping & Delivery</a>
+          <a href="#" class="footer-link">Returns & Refunds</a>
+          <a href="#" class="footer-link">Track Order</a>
+          <a href="#" class="footer-link">Size Guide</a>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="footer-col-title">ABOUT</h3>
+        <div class="footer-links">
+          <a href="#" class="footer-link">Our Story</a>
+          <a href="#" class="footer-link">Artisan Connect</a>
+          <a href="#" class="footer-link">Sustainability</a>
+          <a href="#" class="footer-link">Careers</a>
+          <a href="#" class="footer-link">Contact Us</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <div class="footer-links" style="flex-direction: row; gap: 24px;">
+        <a href="#" class="footer-link">Privacy Policy</a>
+        <a href="#" class="footer-link">Terms & Conditions</a>
+      </div>
+      <p class="body-md" style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">© 2024 SAARANG. All rights reserved.</p>
     </div>
   </footer>
 
-
-
-
-
   <!-- Product Modal -->
+  <div class="modal-overlay" id="modal-overlay"></div>
   <div class="product-modal" id="product-modal">
     <div class="modal-header">
-      <span class="font-label-caps" id="modal-category">CATEGORY</span>
-      <button class="nav-btn material-symbols-outlined" id="close-modal" aria-label="Close">close</button>
+      <button class="close-btn" id="close-modal"><span class="material-symbols-outlined">close</span></button>
     </div>
     <div class="modal-content">
-      <img src="" id="modal-image" class="modal-img" alt="Product Image">
-      <div class="modal-details">
-        <h2 class="font-display-lg" id="modal-title">Product Name</h2>
-        <p class="font-body-md" style="margin-top: 16px; color: var(--ash-muted);">Hand-woven silk with bold modernist
-          patterns.</p>
-
+      <div class="modal-img-container">
+        <img src="" id="modal-image" class="modal-img" alt="Product Image">
       </div>
-    </div>
-    <div class="modal-footer" id="add-to-bag">
-      <span class="font-button-text" style="color: var(--ink-text);">ADD TO BAG - ₹<span
-          id="modal-price">0</span></span>
+      <div class="modal-details">
+        <div class="modal-details-content">
+          <div>
+            <span class="label-caps text-accent" id="modal-category">CATEGORY</span>
+            <h2 class="heading-md" id="modal-title" style="margin-top: 8px;">Product Name</h2>
+            <p class="heading-lg text-accent" style="margin-top: 16px;">₹<span id="modal-price">0</span></p>
+          </div>
+          
+          <p class="body-md">Beautifully crafted saree with intricate detailing, perfect for festive occasions and celebrations. Handwoven with care.</p>
+          
+          <div class="modal-footer">
+            <button class="add-to-bag-btn" id="add-to-bag">ADD TO BAG</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- Cart Sidebar & Overlay -->
+  <!-- Cart Sidebar -->
   <div class="cart-overlay" id="cart-overlay"></div>
   <div class="cart-sidebar" id="cart-sidebar">
     <div class="cart-header">
-      <span class="font-body-md" style="font-weight: 500;">YOUR BAG</span>
-      <button class="nav-btn material-symbols-outlined" id="close-cart" aria-label="Close Cart"
-        style="color: var(--pearl-bg); border: 1px solid rgba(255,255,255,0.2);">close</button>
-    </div>
-
-    <div class="cart-announcement">
-      <span class="font-label-caps" style="color: var(--ink-text); font-weight: 700;">SHIPPING ON ALL ORDERS ABOVE ₹500
-        — COMPLIMENTARY</span>
+      <span class="heading-md" style="font-size: 1.25rem;">YOUR BAG</span>
+      <button class="nav-icon dark" id="close-cart"><span class="material-symbols-outlined">close</span></button>
     </div>
 
     <div class="cart-content" id="cart-items">
@@ -198,34 +385,35 @@
     </div>
 
     <div class="cart-footer">
-      <div class="cart-summary font-body-md">
-        <div class="summary-line">
-          <span style="color: var(--ash-muted);">SUBTOTAL</span>
-          <span id="cart-subtotal" style="font-weight: bold; color: var(--pearl-bg);">₹0.00</span>
-        </div>
-        <div class="summary-line" style="margin-top: 16px;">
-          <span style="color: var(--ash-muted);">SHIPPING</span>
-          <span style="color: var(--primary); font-weight: bold;">COMPLIMENTARY</span>
-        </div>
+      <div class="summary-line">
+        <span class="body-md">SUBTOTAL</span>
+        <span id="cart-subtotal" style="font-weight: 600; color: var(--text-primary);">₹0.00</span>
       </div>
-      <div class="cart-total font-body-md">
-        <div style="display: flex; flex-direction: column;">
-          <span style="color: var(--ash-muted);">TOTAL (INR)</span>
-          <span style="font-weight: bold; font-size: 1.25rem; color: var(--pearl-bg); margin-top: 4px;"
-            id="cart-total">₹0.00</span>
-        </div>
-        <div style="text-align: right; color: var(--ash-muted); font-size: 0.875rem;">
-          TAX<br>CALCULATED AT<br>CHECKOUT
-        </div>
+      <div class="summary-line">
+        <span class="body-md">SHIPPING</span>
+        <span style="font-weight: 600; color: var(--accent);">COMPLIMENTARY</span>
       </div>
-      <div style="padding: 0 24px 24px 24px;">
-        <button class="checkout-btn" id="checkout-btn">CHECKOUT &rarr;</button>
+      <div class="summary-line" style="margin-top: 24px; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 16px;">
+        <span class="body-md" style="color: var(--text-primary); font-weight: 600;">TOTAL</span>
+        <span id="cart-total" class="heading-md text-accent">₹0.00</span>
       </div>
+      <button class="checkout-btn" id="checkout-btn" style="margin-top: 24px;">CHECKOUT &rarr;</button>
     </div>
   </div>
 
   <script src="archive.js"></script>
   <script src="app.js"></script>
+  <script>
+    // Simple navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+  </script>
 </body>
 
 </html>
