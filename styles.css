@@ -815,7 +815,7 @@ body {
   right: 0;
   width: 100%;
   max-width: 400px;
-  height: 100vh;
+  height: 100dvh;
   background-color: var(--bg-cream);
   color: var(--text-primary);
   z-index: 200;
@@ -995,7 +995,6 @@ body {
 
 .modal-content {
   flex-grow: 1;
-  overflow-y: auto;
   display: flex;
   flex-direction: column;
 }
