@@ -2,6 +2,7 @@
 let cart = [];
 let currentProduct = null;
 let allProducts = [];
+let allProductsWithVariants = []; // Stores every row including color variants
 let currentDisplayCount = 0;
 const PRODUCTS_PER_PAGE = 8;
 
@@ -67,20 +68,35 @@ document.addEventListener('DOMContentLoaded', () => {
         // Simple CSV parse handling potential commas in quotes
         const parts = line.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
 
+        // Column order: Name(0), Category(1), Price(2), GroupID(3), Color(4), Link(5)
         if (parts.length >= 4) {
           const name = parts[0].replace(/^"|"$/g, '').trim();
           const category = parts[1].replace(/^"|"$/g, '').trim();
           const price = parseInt(parts[2].replace(/^"|"$/g, '').replace(/[^0-9]/g, '')) || 0;
-          let link = parts[3].replace(/^"|"$/g, '').trim();
+          const groupId = (parts[3] || '').replace(/^"|"$/g, '').trim();
+          const color = (parts[4] || '').replace(/^"|"$/g, '').trim();
+          let link = (parts[5] || parts[3] || '').replace(/^"|"$/g, '').trim();
+
+          // If no groupId/color columns exist, fall back: link is parts[3]
+          // Detect: if groupId looks like a URL, treat it as the link (backwards compat)
+          let actualLink = link;
+          let actualGroupId = groupId;
+          let actualColor = color;
+          if (groupId && (groupId.startsWith('http') || groupId.startsWith('drive.google'))) {
+            // Old format without groupId/color columns
+            actualLink = groupId;
+            actualGroupId = '';
+            actualColor = '';
+          }
 
           // Convert regular Google Drive links to direct image links
           let id = null;
-          const match1 = link.match(/\/d\/([a-zA-Z0-9_-]+)/);
-          const match2 = link.match(/id=([a-zA-Z0-9_-]+)/);
+          const match1 = actualLink.match(/\/d\/([a-zA-Z0-9_-]+)/);
+          const match2 = actualLink.match(/id=([a-zA-Z0-9_-]+)/);
           if (match1) id = match1[1];
           else if (match2) id = match2[1];
 
-          const imageUrl = id ? "https://lh3.googleusercontent.com/d/" + id : link;
+          const imageUrl = id ? "https://lh3.googleusercontent.com/d/" + id : actualLink;
 
           if (category.toUpperCase() === "HERO" || name.toUpperCase() === "HERO") {
             const heroImg = document.querySelector('.hero-bg-img');
@@ -94,7 +110,9 @@ document.addEventListener('DOMContentLoaded', () => {
               name: name || "UNTITLED",
               category: category || "BESTSELLER",
               price: price || 150,
-              url: imageUrl
+              url: imageUrl,
+              groupId: actualGroupId,
+              color: actualColor
             });
           } else {
             products.push({
@@ -102,7 +120,9 @@ document.addEventListener('DOMContentLoaded', () => {
               name: name || "UNTITLED",
               category: category || "NEW ARRIVAL",
               price: price || 150,
-              url: imageUrl
+              url: imageUrl,
+              groupId: actualGroupId,
+              color: actualColor
             });
           }
         }
@@ -217,8 +237,21 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         }
 
-        window.originalProducts = products;
-        allProducts = products;
+        // Keep ALL products (including all color variants) for modal lookups
+        allProductsWithVariants = [...products];
+        window.originalProductsWithVariants = [...products];
+
+        // Deduplicate: show only the first product of each Group ID in the gallery
+        const seenGroups = new Set();
+        const deduped = products.filter(p => {
+          if (!p.groupId) return true; // standalone product, always show
+          if (seenGroups.has(p.groupId)) return false; // already have one from this group
+          seenGroups.add(p.groupId);
+          return true;
+        });
+
+        window.originalProducts = deduped;
+        allProducts = deduped;
         currentDisplayCount = 0;
         gallery.innerHTML = ''; // Clear once before loading first batch
         loadMoreProducts();
@@ -300,6 +333,61 @@ document.addEventListener('DOMContentLoaded', () => {
     modalTitle.textContent = product.name;
     modalPrice.textContent = product.price;
     modalCategory.textContent = product.category || 'PREMIUM SILK';
+
+    // Render color swatches
+    const colorContainer = document.getElementById('modal-color-selector');
+    colorContainer.innerHTML = '';
+
+    // Find all variants in the same group
+    let variants = [];
+    if (product.groupId) {
+      variants = allProductsWithVariants.filter(p => p.groupId === product.groupId);
+    }
+
+    if (variants.length > 1) {
+      const label = document.createElement('span');
+      label.className = 'color-label-text';
+      label.textContent = product.color || 'Color';
+      label.id = 'current-color-label';
+      colorContainer.appendChild(label);
+
+      const swatchList = document.createElement('div');
+      swatchList.className = 'color-swatch-list';
+
+      variants.forEach(variant => {
+        const btn = document.createElement('button');
+        btn.className = 'color-swatch-btn';
+        if (variant.id === product.id) btn.classList.add('active');
+        btn.title = variant.color || variant.name;
+
+        // Use a small thumbnail of the product image as the swatch
+        btn.style.backgroundImage = `url('${variant.url}')`;
+        btn.style.backgroundSize = 'cover';
+        btn.style.backgroundPosition = 'center';
+
+        btn.addEventListener('click', () => {
+          // Update modal content to this variant
+          currentProduct = variant;
+          modalImage.src = variant.url;
+          modalTitle.textContent = variant.name;
+          modalPrice.textContent = variant.price;
+          modalCategory.textContent = variant.category || 'PREMIUM SILK';
+
+          // Update active swatch
+          swatchList.querySelectorAll('.color-swatch-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          // Update color label
+          const lbl = document.getElementById('current-color-label');
+          if (lbl) lbl.textContent = variant.color || 'Color';
+        });
+
+        swatchList.appendChild(btn);
+      });
+
+      colorContainer.appendChild(swatchList);
+    }
+
     modal.classList.add('open');
     const overlay = document.getElementById('modal-overlay');
     if (overlay) overlay.classList.add('open');

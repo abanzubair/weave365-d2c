@@ -1061,6 +1061,49 @@ body {
   cursor: pointer;
 }
 
+/* Color Selector Swatches */
+.color-selector-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+
+.color-swatch-list {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.color-swatch-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.2);
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease;
+  padding: 3px;
+  background-clip: content-box;
+}
+
+.color-swatch-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.color-swatch-btn.active {
+  border: 2px solid var(--text-primary);
+}
+
+.color-label-text {
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-weight: 500;
+}
+
 /* Desktop Media Query */
 @media (min-width: 1024px) {
   .hero-text {
